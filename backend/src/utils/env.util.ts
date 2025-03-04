@@ -4,5 +4,6 @@ export const validateEnvVariable = (
 ): string => {
   if (!value)
     throw new Error(`Missing or invalid ${name} environment variable`);
+  console.log(value);
   return value;
 };

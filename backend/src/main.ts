@@ -1,7 +1,8 @@
 import { NestFactory } from "@nestjs/core";
-import { AppModule } from "./app.module";
-import * as cookieParser from "cookie-parser";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
+import * as cookieParser from "cookie-parser";
+import "dotenv/config";
+import { AppModule } from "./app.module";
 import { validateEnvVariable } from "./utils/env.util";
 
 async function bootstrap() {
