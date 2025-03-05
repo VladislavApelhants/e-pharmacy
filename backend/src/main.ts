@@ -5,6 +5,7 @@ import "dotenv/config";
 import { AppModule } from "./app.module";
 import { validateEnvVariable } from "./utils/env.util";
 
+console.log("process.env.PORT main", process.env.PORT)
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -22,6 +23,11 @@ async function bootstrap() {
   const PORT = Number(validateEnvVariable(process.env.PORT, "PORT")) || 5000;
 
   app.use(cookieParser());
+
+  setInterval(() => {
+    const used = process.memoryUsage();
+    console.log(`Memory: ${Math.round(used.rss / 1024 / 1024)} MB`);
+  }, 5000);
 
   app.enableCors({
     origin: "*",
